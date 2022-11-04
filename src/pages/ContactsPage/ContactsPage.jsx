@@ -1,6 +1,5 @@
-import FormAddContact from 'components/FormAddContact';
 import { Heading } from '@chakra-ui/react';
-import Contact from 'components/Contact';
+import { ContactsSection, FormAddContact } from 'components/allComponents';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,7 +10,7 @@ export default function ContactsPage() {
         PhoneBook
       </Heading>
       <FormAddContact />
-      <Contact />
+      <ContactsSection />
       <ToastContainer />
     </>
   );

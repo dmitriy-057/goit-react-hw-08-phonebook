@@ -26,8 +26,6 @@ const initialValues = {
 export default function FormAddContact() {
   const { data: contacts } = useGetContactsQuery();
   const [addContact, { isLoading }] = useAddContactsMutation();
-  console.log(isLoading);
-
   const onSubmit = async ({ name, phone }, { resetForm }) => {
     try {
       if (isDuplicate(name, phone)) {
@@ -47,7 +45,7 @@ export default function FormAddContact() {
   };
 
   return (
-    <Flex align="center" justify="center" h="50vh">
+    <Flex as="section" align="center" my={3} justify="center" h="50vh">
       <Box border="1px" p={6} rounded="md" w={364}>
         <Formik onSubmit={onSubmit} initialValues={initialValues}>
           <Form>
@@ -55,6 +53,7 @@ export default function FormAddContact() {
               <FormControl>
                 <FormLabel htmlFor="email">Name</FormLabel>
                 <Field
+                  borderColor="blue.200"
                   as={Input}
                   id="name"
                   name="name"
@@ -70,6 +69,7 @@ export default function FormAddContact() {
                 <FormLabel htmlFor="email">Number</FormLabel>
                 <Field
                   as={Input}
+                  borderColor="blue.200"
                   id="phone"
                   name="phone"
                   type="tel"

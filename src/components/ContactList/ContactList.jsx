@@ -1,13 +1,10 @@
-// import { List } from './ContactList.styled';
 import { List } from '@chakra-ui/react';
-import ContactsListItem from './ContactsListItem/ContactsListItem';
-// import Loader from 'components/Loader';
+import { ContactsListItem } from 'components/allComponents';
 import { useGetContactsQuery } from 'redux/contactsApi/contactsApi';
 import { useSelector } from 'react-redux';
 
 export default function ContactList() {
   const { data: contacts = [] } = useGetContactsQuery();
-  // console.log(result);
 
   const filter = useSelector(({ filter }) => filter);
   const getFilteredContacts = () => {

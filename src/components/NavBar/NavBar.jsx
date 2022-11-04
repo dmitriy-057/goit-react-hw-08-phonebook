@@ -8,6 +8,11 @@ export default function NavBar() {
       <Breadcrumb>
         <BreadcrumbItem isCurrentPage>
           <BreadcrumbLink as={Link} to="/">
+            Home
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbLink as={Link} to="/contacts">
             Contacts
           </BreadcrumbLink>
         </BreadcrumbItem>

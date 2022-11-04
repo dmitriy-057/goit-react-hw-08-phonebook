@@ -19,7 +19,7 @@ export const userApi = createApi({
   baseQuery,
   tagTypes: ['User'],
   endpoints: builder => ({
-    getUser: builder.query({
+    getCurrentUser: builder.query({
       query: () => ({
         url: '/users/current',
         method: 'GET',
@@ -52,7 +52,7 @@ export const userApi = createApi({
 });
 
 export const {
-  useGetUserQuery,
+  useGetCurrentUserQuery,
   useCreateUserMutation,
   useUserLogInMutation,
   useUserLogOutMutation,

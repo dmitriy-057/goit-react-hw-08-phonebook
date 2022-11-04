@@ -1,7 +1,7 @@
 // import Loader from 'components/Loader';
 // import { Text, Button } from './ContactsListItem.styled';
 import { ListItem, Text, Button } from '@chakra-ui/react';
-import Loader from 'components/Loader';
+import { Loader } from 'components/allComponents';
 import { useRemoveContactsMutation } from 'redux/contactsApi/contactsApi';
 
 export default function ContactsListItem({ name, phone, id }) {
