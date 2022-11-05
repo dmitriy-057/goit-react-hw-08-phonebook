@@ -7,6 +7,8 @@ import ContactsListItem from './ContactList/ContactsListItem';
 import ContactsSection from './ContactsSection';
 import AuthFormSignup from './AuthFormSignup';
 import AuthFormLogin from './AuthFormLogin';
+import Header from './NavBarComponents/Header';
+import MenuItem from './NavBarComponents/MenuItem';
 export {
   Loader,
   NavBar,
@@ -17,4 +19,6 @@ export {
   ContactsSection,
   AuthFormSignup,
   AuthFormLogin,
+  Header,
+  MenuItem,
 };
