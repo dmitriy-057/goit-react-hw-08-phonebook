@@ -33,7 +33,6 @@ export default function AuthFormLogin() {
   };
   useEffect(() => {
     if (isSuccess) {
-      console.log('useUserLogInMutation', data);
       dispatch(setCredentials({ user: data.user, token: data.token }));
     }
   }, [data, dispatch, isSuccess]);
