@@ -10,6 +10,7 @@ export default function ContactsPage() {
         PhoneBook
       </Heading>
       <Flex
+        justifyContent="center"
         direction={['column', 'row', 'row', 'row']}
         spacing="24px"
         gap={[0, 0, 5, 10]}
