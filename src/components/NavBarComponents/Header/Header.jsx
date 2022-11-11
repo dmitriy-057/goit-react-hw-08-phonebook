@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flex, Box, Text } from '@chakra-ui/react';
+import { Flex, Box, Text, Link } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Outlet } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
@@ -22,9 +22,9 @@ const Header = () => {
         w="100%"
       >
         <Box w="200px">
-          <Text fontSize="lg" fontWeight="bold">
+          <Link fontSize="lg" fontWeight="bold">
             Logo
-          </Text>
+          </Link>
         </Box>
 
         <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>

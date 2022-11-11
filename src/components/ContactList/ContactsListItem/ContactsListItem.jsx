@@ -7,7 +7,7 @@ import { useRemoveContactsMutation } from 'redux/contactsApi/contactsApi';
 export default function ContactsListItem({ name, number, id }) {
   const [removeContact, { isLoading }] = useRemoveContactsMutation();
   return (
-    <ListItem alignItems="center" w={[300, 400, 500]} display="flex">
+    <ListItem alignItems="center" w={[300, 350]} display="flex">
       <Text mr="auto">{name + ' : ' + number} </Text>
       {isLoading && <Loader height={17} width={17} />}
       <Button

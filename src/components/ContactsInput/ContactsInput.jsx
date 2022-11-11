@@ -12,7 +12,7 @@ export default function ContactsInput() {
     <Input
       mb={4}
       borderColor="blue.200"
-      w={[300, 400, 500]}
+      // w={[300, 400, 500]}
       onChange={handleChange}
       id="filter"
       name="filter"

@@ -24,7 +24,7 @@ export default function App() {
   }, [dataUser, dispatch, isRefreshing]);
   return (
     !isRefreshing && (
-      <Container minW="container.lg">
+      <Container maxW="container.lg">
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />

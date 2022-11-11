@@ -21,7 +21,7 @@ export default function ContactList() {
   const filteredContacts = getFilteredContacts();
 
   return (
-    <List display="flex" flexDirection="column" rowGap={3} minHeight={200}>
+    <List display="flex" flexDirection="column" rowGap={3}>
       {filteredContacts.map(({ id, name, number }) => (
         <ContactsListItem key={id} id={id} name={name} number={number} />
       ))}

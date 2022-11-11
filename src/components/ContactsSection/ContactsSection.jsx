@@ -1,15 +1,22 @@
-import { Heading, Box } from '@chakra-ui/react';
+import { Heading, Flex } from '@chakra-ui/react';
 
 import { ContactsInput, ContactList } from 'components/allComponents';
 
 export default function ContactsSection() {
   return (
-    <Box as="section" display="flex" flexDir="column" alignItems="center">
+    <Flex
+      as="section"
+      align="center"
+      direction="column"
+      my={3}
+      justify="center"
+      h="50vh"
+    >
       <Heading as="h3" mb={4}>
         Conatcts
       </Heading>
       <ContactsInput />
       <ContactList />
-    </Box>
+    </Flex>
   );
 }
