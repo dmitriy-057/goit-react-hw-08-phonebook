@@ -20,27 +20,27 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 export default function FormAddContact() {
   const { data: contacts } = useGetContactsQuery();
   const [addContact, { isLoading }] = useAddContactsMutation();
-  const onSubmit = async ({ name, phone }, { resetForm }) => {
+  const onSubmit = async ({ name, number }, { resetForm }) => {
     try {
-      if (isDuplicate(name, phone)) {
+      if (isDuplicate(name, number)) {
         resetForm();
-        return toast(`Contact ${name + ' :' + phone} already exists`);
+        return toast(`Contact ${name + ' :' + number} already exists`);
       }
-      await addContact({ name, phone, id: nanoid() });
+      await addContact({ name, number, id: nanoid() });
     } catch (error) {
       console.log(error);
     }
     resetForm();
   };
-  const isDuplicate = (name, phone) => {
+  const isDuplicate = (name, number) => {
     return contacts.find(
-      contact => contact.name === name && contact.phone === phone
+      contact => contact.name === name && contact.number === number
     );
   };
 
@@ -70,12 +70,12 @@ export default function FormAddContact() {
                 <Field
                   as={Input}
                   borderColor="blue.200"
-                  id="phone"
-                  name="phone"
+                  id="number"
+                  name="number"
                   type="tel"
                   variant="outline"
                   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                  title="Number must be digits and can contain spaces, dashes, parentheses and can start with +"
                   required
                 />
               </FormControl>

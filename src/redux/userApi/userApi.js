@@ -1,18 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://connections-api.herokuapp.com',
-  prepareHeaders: (headers, { getState }) => {
-    console.log('getState', getState());
-    const token = getState().auth.token;
-
-    // If we have a token set in state, let's assume that we should be passing it.
-    if (token) {
-      headers.set('authorization', `Bearer ${token}`);
-    }
-
-    return headers;
-  },
-});
+import { createApi } from '@reduxjs/toolkit/query/react';
+import baseQuery from 'redux/baseQuery';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -25,6 +12,15 @@ export const userApi = createApi({
         method: 'GET',
         providesTags: ['User'],
       }),
+      // async onQueryStarted(_, { getState }) {
+      //   const token = getState().auth.token;
+      //   console.log('getState', getState());
+      //   console.log('token', token);
+      //   if (token === null) {
+      //     console.log('tokena net');
+      //     return;
+      //   }
+      // },
     }),
     createUser: builder.mutation({
       query: user => ({
@@ -32,19 +28,22 @@ export const userApi = createApi({
         method: 'POST',
         body: user,
       }),
+
       invalidatesTags: ['User'],
     }),
     userLogIn: builder.mutation({
       query: user => ({
         url: '/users/login',
         method: 'POST',
+        body: user,
       }),
+
       invalidatesTags: ['User'],
     }),
     userLogOut: builder.mutation({
-      query: user => ({
+      query: () => ({
         url: '/users/logout',
-        method: 'User',
+        method: 'POST',
       }),
       invalidatesTags: ['Login'],
     }),
@@ -57,3 +56,16 @@ export const {
   useUserLogInMutation,
   useUserLogOutMutation,
 } = userApi;
+
+// async onQueryStarted(id, { dispatch, queryFulfilled }) {
+//         // `onStart` side-effect
+//         dispatch(messageCreated('Fetching post...'))
+//         try {
+//           const { data } = await queryFulfilled
+//           // `onSuccess` side-effect
+//           dispatch(messageCreated('Post received!'))
+//         } catch (err) {
+//           // `onError` side-effect
+//           dispatch(messageCreated('Error fetching post!'))
+//         }
+//       }

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 export default function ContactList() {
   const { data: contacts = [] } = useGetContactsQuery();
+  console.log(contacts);
 
   const filter = useSelector(({ filter }) => filter);
   const getFilteredContacts = () => {
@@ -12,18 +13,18 @@ export default function ContactList() {
       return contacts;
     }
     return contacts.filter(
-      ({ name, phone }) =>
+      ({ name, number }) =>
         name.toLowerCase().includes(filter.toLowerCase()) ||
-        phone.toLowerCase().includes(filter.toLowerCase())
+        number.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
   const filteredContacts = getFilteredContacts();
 
   return (
-    <List display="flex" flexDirection="column" rowGap={3}>
-      {filteredContacts.map(({ id, name, phone }) => (
-        <ContactsListItem key={id} id={id} name={name} phone={phone} />
+    <List display="flex" flexDirection="column" rowGap={3} minHeight={200}>
+      {filteredContacts.map(({ id, name, number }) => (
+        <ContactsListItem key={id} id={id} name={name} number={number} />
       ))}
     </List>
   );

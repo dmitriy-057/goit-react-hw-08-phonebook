@@ -1,12 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import baseQuery from 'redux/baseQuery';
 
-// Define a service using a base URL and expected endpoints
-// https://connections-api.herokuapp.com
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://635bde928aa87edd91535ce6.mockapi.io',
-  }),
+  baseQuery,
   tagTypes: ['Contacts'],
   endpoints: builder => ({
     getContacts: builder.query({

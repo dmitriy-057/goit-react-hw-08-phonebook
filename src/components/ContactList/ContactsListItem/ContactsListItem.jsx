@@ -4,11 +4,11 @@ import { ListItem, Text, Button } from '@chakra-ui/react';
 import { Loader } from 'components/allComponents';
 import { useRemoveContactsMutation } from 'redux/contactsApi/contactsApi';
 
-export default function ContactsListItem({ name, phone, id }) {
+export default function ContactsListItem({ name, number, id }) {
   const [removeContact, { isLoading }] = useRemoveContactsMutation();
   return (
     <ListItem alignItems="center" w={[300, 400, 500]} display="flex">
-      <Text mr="auto">{name + ' : ' + phone} </Text>
+      <Text mr="auto">{name + ' : ' + number} </Text>
       {isLoading && <Loader height={17} width={17} />}
       <Button
         type="button"

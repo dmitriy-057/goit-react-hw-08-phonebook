@@ -1,5 +1,5 @@
 import Loader from './Loader';
-import NavBar from './NavBar';
+
 import FormAddContact from './FormAddContact';
 import ContactsInput from './ContactsInput';
 import ContactList from './ContactList';
@@ -11,7 +11,6 @@ import Header from './NavBarComponents/Header';
 import MenuItem from './NavBarComponents/MenuItem';
 export {
   Loader,
-  NavBar,
   FormAddContact,
   ContactsInput,
   ContactList,

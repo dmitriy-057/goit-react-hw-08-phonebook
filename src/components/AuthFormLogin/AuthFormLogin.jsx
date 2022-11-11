@@ -1,4 +1,9 @@
 import { Formik, Field, Form } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useUserLogInMutation } from 'redux/userApi/userApi';
+import { setCredentials } from 'redux/authSlice/authSlice';
+
 import {
   Box,
   Button,
@@ -9,21 +14,34 @@ import {
   Input,
   VStack,
 } from '@chakra-ui/react';
+
 const initialValues = {
   email: '',
   password: '',
 };
 
 export default function AuthFormLogin() {
+  const dispatch = useDispatch();
+  const [loginUser, { data, isSuccess }] = useUserLogInMutation();
+  const handleSubmit = async ({ email, password }, { resetForm }) => {
+    try {
+      await loginUser({ email, password });
+      resetForm();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    if (isSuccess) {
+      console.log('useUserLogInMutation', data);
+      dispatch(setCredentials({ user: data.user, token: data.token }));
+    }
+  }, [data, dispatch, isSuccess]);
+
   return (
     <Flex align="center" justify="center" h="100vh">
       <Box border="1px" p={6} rounded="md" w={400}>
-        <Formik
-          onSubmit={values => {
-            console.log(values);
-          }}
-          initialValues={initialValues}
-        >
+        <Formik onSubmit={handleSubmit} initialValues={initialValues}>
           {({ errors, touched }) => (
             <Form>
               <VStack spacing={4} align="flex-start">
