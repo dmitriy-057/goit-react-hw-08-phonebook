@@ -1,4 +1,4 @@
-import { Heading, Stack, Flex } from '@chakra-ui/react';
+import { Heading, Flex } from '@chakra-ui/react';
 import { ContactsSection, FormAddContact } from 'components/allComponents';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

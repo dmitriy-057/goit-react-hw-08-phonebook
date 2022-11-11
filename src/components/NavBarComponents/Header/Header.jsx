@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flex, Box, Text, Link } from '@chakra-ui/react';
+import { Flex, Box, Link } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Outlet } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
