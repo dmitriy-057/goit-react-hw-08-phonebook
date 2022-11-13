@@ -30,7 +30,7 @@ export default function AuthFormSignup() {
   };
 
   return (
-    <Flex align="center" justify="center" h="100vh">
+    <Flex align="center" justify="center" h="70vh">
       <Box border="1px" p={6} rounded="md" w={400}>
         <Formik onSubmit={handleSubmit} initialValues={initialValues}>
           {({ errors, touched }) => (

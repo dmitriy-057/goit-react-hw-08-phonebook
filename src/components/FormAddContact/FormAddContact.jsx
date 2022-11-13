@@ -46,7 +46,7 @@ export default function FormAddContact() {
 
   return (
     <Flex as="section" align="center" my={3} justify="center" h="50vh">
-      <Box border="1px" p={6} rounded="md" w={364}>
+      <Box border="1px" p={6} rounded="md" w={[310, 310, 364]}>
         <Formik onSubmit={onSubmit} initialValues={initialValues}>
           <Form>
             <VStack spacing={4} align="flex-start">

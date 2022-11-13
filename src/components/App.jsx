@@ -10,6 +10,8 @@ import PrivateRoute from './PrivateRoute';
 import useAuth from 'hooks/useAuth';
 import { useFetchCurrentUserMutation } from 'redux/userApi/authApi';
 import 'react-toastify/dist/ReactToastify.css';
+import { theme } from '@chakra-ui/theme';
+console.log(theme);
 
 export default function App() {
   const { isRefreshing, isLogin } = useAuth();
@@ -25,7 +27,7 @@ export default function App() {
   }, [token, fetchCurrentUser, isLogin]);
   return (
     !isRefreshing && (
-      <Container maxW="container.lg">
+      <Container maxW="container.lg" mx={['auto', 'auto', 'auto', 'auto']}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />

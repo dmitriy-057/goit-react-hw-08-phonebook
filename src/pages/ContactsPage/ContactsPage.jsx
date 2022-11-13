@@ -13,8 +13,8 @@ export default function ContactsPage() {
         justifyContent="center"
         direction={['column', 'row', 'row', 'row']}
         spacing="24px"
-        gap={[0, 0, 5, 10]}
-        alignItems="baseline"
+        gap={[0, 5, 5, 10]}
+        alignItems={['center', 'center', 'center', 'baseline']}
       >
         <FormAddContact />
         <ContactsSection />
