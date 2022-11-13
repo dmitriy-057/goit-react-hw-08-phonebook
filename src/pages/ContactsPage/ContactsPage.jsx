@@ -14,6 +14,7 @@ export default function ContactsPage() {
         direction={['column', 'row', 'row', 'row']}
         spacing="24px"
         gap={[0, 0, 5, 10]}
+        alignItems="baseline"
       >
         <FormAddContact />
         <ContactsSection />
@@ -23,25 +24,3 @@ export default function ContactsPage() {
     </>
   );
 }
-
-// import { Heading, Box, Stack ,Flex} from '@chakra-ui/react';
-
-// import { ContactsInput, ContactList } from 'components/allComponents';
-
-// export default function ContactsSection() {
-//   return (
-//     <Box as="section" display="flex"  alignItems="center">
-//       <Heading as="h3" mb={4}>
-//         Conatcts
-//       </Heading>
-//       <Stack
-//         direction={['column', 'row', 'row', 'row']}
-//         pt={[4, 4, 0, 0]}
-//         spacing="24px"
-//       >
-//         <ContactsInput />
-//         <ContactList />
-//       </Stack>
-//     </Box>
-//   );
-// }

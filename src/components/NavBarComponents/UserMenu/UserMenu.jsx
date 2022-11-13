@@ -1,19 +1,21 @@
 import { Button, theme } from '@chakra-ui/react';
-import { useUserLogOutMutation } from 'redux/userApi/userApi';
-import { Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/authSlice/authSlice';
-import { useEffect } from 'react';
 
+import { useEffect } from 'react';
+import { useLogOutMutation } from 'redux/userApi/authApi';
+import useAuth from 'hooks/useAuth';
+import { useState } from 'react';
 export default function UserMenu() {
-  const dispatch = useDispatch();
-  //   useSelector;
-  const [logOutUser, { isSuccess }] = useUserLogOutMutation();
+  const [logOut, setLogOut] = useState(false);
+  const isLoginIn = useAuth().isLogin;
+  const [logOutUser] = useLogOutMutation();
+
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(logOut({}));
+    if (!isLoginIn) {
+      setLogOut(true);
+      console.log(logOut);
     }
-  }, [dispatch, isSuccess]);
+  }, [isLoginIn, logOut]);
+  console.log('first', isLoginIn);
   return (
     <>
       <Button
@@ -23,7 +25,6 @@ export default function UserMenu() {
       >
         LogOut
       </Button>
-      {isSuccess && <Navigate to="/login" />}
     </>
   );
 }

@@ -9,11 +9,9 @@ import {
   Input,
   VStack,
 } from '@chakra-ui/react';
-import { useCreateUserMutation } from 'redux/userApi/userApi';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { setCredentials } from 'redux/authSlice/authSlice';
+import { useRegisterMutation } from 'redux/userApi/authApi';
+
 const initialValues = {
   name: '',
   email: '',
@@ -21,8 +19,7 @@ const initialValues = {
 };
 
 export default function AuthFormSignup() {
-  const dispatch = useDispatch();
-  const [createUser, { data, isSuccess }] = useCreateUserMutation();
+  const [createUser] = useRegisterMutation();
   const handleSubmit = async ({ name, email, password }, { resetForm }) => {
     try {
       await createUser({ name, email, password });
@@ -31,12 +28,6 @@ export default function AuthFormSignup() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    if (isSuccess) {
-      console.log('useCreateUserMutation', data);
-      dispatch(setCredentials({ user: data.user, token: data.token }));
-    }
-  }, [data, dispatch, isSuccess]);
 
   return (
     <Flex align="center" justify="center" h="100vh">

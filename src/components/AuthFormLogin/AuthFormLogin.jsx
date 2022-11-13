@@ -1,9 +1,6 @@
 import { Formik, Field, Form } from 'formik';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { useUserLogInMutation } from 'redux/userApi/userApi';
-import { setCredentials } from 'redux/authSlice/authSlice';
 
+import { useLogInMutation } from 'redux/userApi/authApi';
 import {
   Box,
   Button,
@@ -21,8 +18,9 @@ const initialValues = {
 };
 
 export default function AuthFormLogin() {
-  const dispatch = useDispatch();
-  const [loginUser, { data, isSuccess }] = useUserLogInMutation();
+  console.log(useLogInMutation());
+
+  const [loginUser] = useLogInMutation();
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     try {
       await loginUser({ email, password });
@@ -31,11 +29,6 @@ export default function AuthFormLogin() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(setCredentials({ user: data.user, token: data.token }));
-    }
-  }, [data, dispatch, isSuccess]);
 
   return (
     <Flex align="center" justify="center" h="100vh">

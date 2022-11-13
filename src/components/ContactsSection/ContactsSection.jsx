@@ -9,8 +9,8 @@ export default function ContactsSection() {
       align="center"
       direction="column"
       my={3}
-      justify="center"
-      h="50vh"
+      minH="226px"
+      w="50vh"
     >
       <Heading as="h3" mb={4}>
         Conatcts

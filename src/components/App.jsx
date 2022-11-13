@@ -4,24 +4,25 @@ import { Routes, Route } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
 import { RegisterPage, LoginPage, ContactsPage, HomePage } from 'pages';
 import { Header } from './allComponents';
-import { useGetCurrentUserQuery } from 'redux/userApi/userApi';
-import { refreshUser } from 'redux/authSlice/authSlice';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
-
+import useAuth from 'hooks/useAuth';
+import { useFetchCurrentUserMutation } from 'redux/userApi/authApi';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
-  const dispatch = useDispatch();
+  const { isRefreshing, isLogin } = useAuth();
 
-  const { data: dataUser, isLoading: isRefreshing } = useGetCurrentUserQuery();
+  const [fetchCurrentUser] = useFetchCurrentUserMutation();
+
+  const token = useAuth().takeToken;
+
   useEffect(() => {
-    if (dataUser) {
-      dispatch(refreshUser({ user: dataUser, isRefreshing }));
+    if (token && !isLogin) {
+      fetchCurrentUser();
     }
-  }, [dataUser, dispatch, isRefreshing]);
+  }, [token, fetchCurrentUser, isLogin]);
   return (
     !isRefreshing && (
       <Container maxW="container.lg">
