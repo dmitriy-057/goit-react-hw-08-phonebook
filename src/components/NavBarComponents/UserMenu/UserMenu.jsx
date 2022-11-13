@@ -12,7 +12,6 @@ export default function UserMenu() {
   useEffect(() => {
     if (!isLoginIn) {
       setLogOut(true);
-      console.log(logOut);
     }
   }, [isLoginIn, logOut]);
 
