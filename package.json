@@ -2,7 +2,7 @@
   "name": "goit-react-hw-08-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Lavelian.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://dmitriy-057.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",
     "@chakra-ui/react": "^2.3.7",
