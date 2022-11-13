@@ -18,8 +18,6 @@ const initialValues = {
 };
 
 export default function AuthFormLogin() {
-  console.log(useLogInMutation());
-
   const [loginUser] = useLogInMutation();
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     try {

@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
   const { isLogin, isRefrashing } = useAuth();
   const shouldRedirect = !isRefrashing && !isLogin;
-  console.log('shouldRedirect', shouldRedirect);
+
   return shouldRedirect ? <Navigate to={redirectTo} /> : <Component />;
 };
 
