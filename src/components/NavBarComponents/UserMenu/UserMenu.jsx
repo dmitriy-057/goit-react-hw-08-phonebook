@@ -15,7 +15,7 @@ export default function UserMenu() {
       console.log(logOut);
     }
   }, [isLoginIn, logOut]);
-  console.log('first', isLoginIn);
+
   return (
     <>
       <Button
